@@ -677,4 +677,4 @@ keep_alive()  # Starts a webserver to be pinged.
 #token = os.environ.get("DISCORD_BOT_SECRET") 
 #bot.run(MTA5NjM4NjYyMzg1NzUwNDI1Nw.Gzy0o6.Xn4S17cnsxTI0Lopnt3PH2bQV7ly3VRqHEb-RI)  # Starts the bot
 
-bot.run("MTA5NjM4NjYyMzg1NzUwNDI1Nw.G_gl_9.LtgkJDAROyik5pDIsoZ0ic2L0iJntuDotUiEXA")
+bot.run("MTA5NjM4NjYyMzg1NzUwNDI1Nw.G_ApxC.g5Sh-feVRRWq5Y8ayYJNnz5tH-bQQndfZknjZ8")

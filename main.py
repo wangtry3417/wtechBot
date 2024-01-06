@@ -13,6 +13,7 @@ from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives import serialization
 from cryptography.fernet import Fernet
+import os
 
 intents = discord.Intents().all()
 
@@ -677,4 +678,4 @@ keep_alive()  # Starts a webserver to be pinged.
 #token = os.environ.get("DISCORD_BOT_SECRET") 
 #bot.run(MTA5NjM4NjYyMzg1NzUwNDI1Nw.Gzy0o6.Xn4S17cnsxTI0Lopnt3PH2bQV7ly3VRqHEb-RI)  # Starts the bot
 
-bot.run("MTA5NjM4NjYyMzg1NzUwNDI1Nw.G_ApxC.g5Sh-feVRRWq5Y8ayYJNnz5tH-bQQndfZknjZ8")
+bot.run(os.environ.get('token'))

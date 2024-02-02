@@ -2,3 +2,5 @@ discord
 random2
 requests
 flask
+replit
+cryptography

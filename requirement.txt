@@ -1,0 +1,4 @@
+discord
+random2
+requests
+flask

@@ -678,4 +678,4 @@ keep_alive()  # Starts a webserver to be pinged.
 #token = os.environ.get("DISCORD_BOT_SECRET") 
 #bot.run(MTA5NjM4NjYyMzg1NzUwNDI1Nw.Gzy0o6.Xn4S17cnsxTI0Lopnt3PH2bQV7ly3VRqHEb-RI)  # Starts the bot
 
-bot.run(os.environ.get('token'))
+bot.run("MTA5NjM4NjYyMzg1NzUwNDI1Nw.Gf99bN.rPXp_xFzrKJYm3bm8hztpndLgNxxdiVfA9v6UY")

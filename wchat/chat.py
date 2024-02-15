@@ -17,7 +17,7 @@ class fungpt:
     data = fernet.decrypt(api_key)
     try:
       if data.decode == "WTechPass122":
-        return fungpt.chat(num=randint(22928,292892)
+        return fungpt.chat(num=randint(22928,292892))
       else:
         return "Your key invaild!"
     except:

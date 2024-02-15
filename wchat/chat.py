@@ -24,7 +24,7 @@ class fungpt:
       return "Please input your key!"
   @staticmethod
   def chat(self,num : int):
-    if num not None:
+    if num != None:
       if prompt is None:
         if prompt == "Hello" or "Hi" or "hi" or "hello":
           self.aigen = "Hello!"

@@ -10,7 +10,7 @@ class fungpt:
     self.aigen = None
     self.freeime = 3
   @staticmethod
-  def run(self,api_key : str):
+  def run(api_key : str):
     key = "DUBWKuYEugUex8ynVKm-7ctcUmwaV0u0JpzLkoka8_Q="
     fernet = Fernet(key)
     # 解密结果

@@ -14,7 +14,7 @@ class fungpt:
     key = "DUBWKuYEugUex8ynVKm-7ctcUmwaV0u0JpzLkoka8_Q="
     fernet = Fernet(key)
     # 解密结果
-    data = fernet.decrypt(api_key)
+    data = fernet.decrypt(api_key.encode())
     try:
       if data.decode() == "WTechPass122":
         return fungpt.chat(num=randint(22928,292892))

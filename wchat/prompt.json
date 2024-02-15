@@ -1,1 +1,14 @@
-
+[
+  {
+    "prompt" : "Hello",
+    "ans" : "Hello!How are you?",
+  },
+  {
+    "prompt" : "Hi",
+    "ans" : "Hello!How are you?",
+  },
+  {
+    "prompt" : "How are you",
+    "ans" : "Hello!I am good!How about you?",
+  }
+]

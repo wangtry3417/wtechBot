@@ -9,6 +9,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'cryptography',
-        'random2'
+        'random2',
+        'nltk'
     ],
 )

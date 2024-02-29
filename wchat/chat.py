@@ -132,6 +132,7 @@ class fungpt:
       print("Talk to the program by typing in plain English, using normal upper-")
       print('and lower-case letters and punctuation.  Enter "quit" when done.')
       print("=" * 72)
+      rude_chatbot.converse()
     else:
       return "You must use the run() first!"
                              

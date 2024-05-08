@@ -5,6 +5,7 @@ import os
 import nltk
 from random import randint,choice
 from time import sleep
+import asyncio
 
 nltk.download("punkt")
 wtechAbout = """
@@ -44,13 +45,13 @@ async def generate_text(ctx):
    if statment == 1:
        message = await ctx.respond(wtechAbout[0])
        for idx, wa in enumerate(list(wtechAbout)[1:], start=1):
-           sleep(1)
+           await asyncio.sleep(1)
            displayed_text += wa
            await message.edit(content=displayed_text)
    else:
        message = await ctx.respond(wtechCS[0])
        for idx, wa in enumerate(list(wtechCS)[1:], start=1):
-           sleep(1)
+           await asyncio.sleep(1)
            displayed_text += wa
            await message.edit(content=displayed_text)
 

@@ -7,6 +7,8 @@ from random import randint,choice
 from time import sleep
 import asyncio
 
+import fastapi_poe as fp
+
 nltk.download("punkt")
 wtechAbout = """
 WTech Inc. 是一個科技團隊，主要業務包括泓幣(WCoins)、電腦遊戲販售、wtps://內部協議
@@ -25,6 +27,22 @@ bot = Bot(description="This bot made by WTech.")
 @bot.event
 async def on_ready():
     print("ok")
+
+class EchoBot(fp.PoeBot):
+    async def get_response(self, request: fp.QueryRequest):
+        last_message = request.query[-1].content
+        tokens = nltk.word_tokenize(last_message)
+        if any(token in wtechAbout for token in tokens):
+            for wa in list(wtechAbout):
+                yield fp.PartialResponse(text=wa)
+                sleep(0.1)
+        elif any(token in wtechCS for token in tokens):
+          for wa in list(wtechCS):
+            yield fp.PartialResponse(text=wa)
+            sleep(0.1)
+        else:
+            yield fp.PartialResponse(text="No sir!.")
+            sleep(0.1)
 
 @bot.slash_command()
 async def about(ctx):
@@ -55,5 +73,5 @@ async def generate_text(ctx):
            displayed_text += wa
            await message.edit(content=displayed_text)
 
-
+fp.run(EchoBot(),access_key="PSwr0cAY2heLRrHjikTwEpf8BDrygS49")
 bot.run(os.environ.get("token"))

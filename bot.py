@@ -40,8 +40,6 @@ class EchoBot(fp.PoeBot):
             yield fp.PartialResponse(text="No sir!.")
             sleep(0.1)
 
-    await ctx.respond(embed=e)
-
 def run_poe():
    fp.run(EchoBot(),access_key="PSwr0cAY2heLRrHjikTwEpf8BDrygS49")
 

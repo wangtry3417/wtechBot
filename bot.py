@@ -9,6 +9,8 @@ import asyncio
 
 import fastapi_poe as fp
 
+import threading
+
 nltk.download("punkt")
 wtechAbout = """
 WTech Inc. 是一個科技團隊，主要業務包括泓幣(WCoins)、電腦遊戲販售、wtps://內部協議
@@ -72,6 +74,14 @@ async def generate_text(ctx):
            await asyncio.sleep(1)
            displayed_text += wa
            await message.edit(content=displayed_text)
+def run_poe():
+  fp.run(EchoBot(),access_key="PSwr0cAY2heLRrHjikTwEpf8BDrygS49")
 
-fp.run(EchoBot(),access_key="PSwr0cAY2heLRrHjikTwEpf8BDrygS49")
-bot.run(os.environ.get("token"))
+def run_dc():
+  bot.run(os.environ.get("token"))
+
+thread1 = threading.Thread(target=run_poe)
+thread2 = threading.Thread(target=run_dc)
+
+thread1.start()
+thread2.start()

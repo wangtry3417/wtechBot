@@ -40,11 +40,6 @@ class EchoBot(fp.PoeBot):
             yield fp.PartialResponse(text="No sir!.")
             sleep(0.1)
 
-@bot.slash_command()
-async def about(ctx):
-    e = Embed(title="about me",description="""Hello, I am made by wtech inc.
-              The link: http://wtechhk.xyz"
-              """)
     await ctx.respond(embed=e)
 
 def run_poe():

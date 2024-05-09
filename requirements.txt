@@ -2,3 +2,4 @@ py-cord
 requests
 nltk
 asyncio
+fastapi_poe

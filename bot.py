@@ -24,12 +24,6 @@ wtechCS = """
  客服，泓技客戶服務部，customer service, cs，提供泓技服務。
 """
 
-bot = Bot(description="This bot made by WTech.")
-
-@bot.event
-async def on_ready():
-    print("ok")
-
 class EchoBot(fp.PoeBot):
     async def get_response(self, request: fp.QueryRequest):
         last_message = request.query[-1].content
@@ -53,35 +47,10 @@ async def about(ctx):
               """)
     await ctx.respond(embed=e)
 
-@bot.slash_command(description="To google search",options=[Option(str,description="query",name="query")])
-async def ggogle_search(ctx,query):
-   res = req.get(url=f"https://google.com/search?q={query}").content
-   await ctx.respond(res)
-
-@bot.slash_command(name="generate",description="generate some text.")
-async def generate_text(ctx):
-   statment = randint(0,1)
-   displayed_text = ''
-   if statment == 1:
-       message = await ctx.respond(wtechAbout[0])
-       for idx, wa in enumerate(list(wtechAbout)[1:], start=1):
-           await asyncio.sleep(1)
-           displayed_text += wa
-           await message.edit(content=displayed_text)
-   else:
-       message = await ctx.respond(wtechCS[0])
-       for idx, wa in enumerate(list(wtechCS)[1:], start=1):
-           await asyncio.sleep(1)
-           displayed_text += wa
-           await message.edit(content=displayed_text)
 def run_poe():
-  fp.run(EchoBot(),access_key="PSwr0cAY2heLRrHjikTwEpf8BDrygS49")
+   fp.run(EchoBot(),access_key="PSwr0cAY2heLRrHjikTwEpf8BDrygS49")
 
-def run_dc():
-  bot.run(os.environ.get("token"))
 
 thread1 = threading.Thread(target=run_poe)
-thread2 = threading.Thread(target=run_dc)
 
 thread1.start()
-thread2.start()

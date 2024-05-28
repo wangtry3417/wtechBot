@@ -1,5 +1,5 @@
-py-cord
 requests
-nltk
+discord
 asyncio
-fastapi_poe
+replit
+cryptography

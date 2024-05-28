@@ -139,8 +139,8 @@ async def chat(ctx,*,prompt : str):
     await ctx.send("Sorry,I don't understand what are you talking about.")
     
 
-@bot.command(pass_context = True)
-async def say(ctx,*,arg1):
+@bot.command(name="hc",pass_context = True)
+async def human_control(ctx,*,arg1):
   await ctx.message.delete()
   await ctx.send(arg1)
 

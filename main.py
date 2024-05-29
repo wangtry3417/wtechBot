@@ -546,7 +546,7 @@ async def checkPayment(ctx):
   price = int(price.content)
   await ctx.send("""
   請輸入付款方式:
-  1 -- 泓幣
+  1 -- 泓幣（第一代）
   2 -- 轉帳
   3 -- 超商 【目前沒有，將會有】
   """)

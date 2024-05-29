@@ -79,7 +79,7 @@ async def ask12(ctx,*,arg1):
     await ctx.send("Sorry,I cannot.")
 
 @bot.command()
-async def chat(ctx,*,prompt : str):
+async def chat_prompt(ctx,*,prompt : str):
   if prompt == "What can you do?":
     await ctx.send("Hello there,I know many about of things,but nowsaday, for my version,is not doing many things.")
   elif prompt == "Can you code with me?":

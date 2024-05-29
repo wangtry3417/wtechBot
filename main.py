@@ -531,13 +531,13 @@ async def checkPayment(ctx):
   await ctx.send("請輸入客戶名稱：")
   client = await bot.wait_for("message",check=lambda message:check(ctx,message),timeout=10)
   client = client.content
-  db["lient"] = "Below:!."
+  #db["lient"] = "Below:!."
   cl = "client"
   num = str(r.randint(102938,908717))
   c = cl + num
-  prefix = f"client{client}{num}"
-  db[c] = prefix
-  await ctx.send("你的名稱已紀錄於泓技database")
+  #prefix = f"client{client}{num}"
+  #db[c] = prefix
+  #await ctx.send("你的名稱已紀錄於泓技database")
   sleep(1.5)
   await ctx.send("請輸入購買項目：")
   product = await bot.wait_for("message",check=lambda message:check(ctx,message),timeout=8)

@@ -27,12 +27,12 @@ class Client:
         self.event_handlers[event] = func
         return func
       return wrapper
-    #Connect to socketIO server
-    async def connect(self):
-      await self.sio.connect(self.server_url)
-    #Disconnect to socketIO server
-    async def disconnect(self):
-      await self.sio.disconnect()
+  #Connect to socketIO server
+  async def connect(self):
+    await self.sio.connect(self.server_url)
+  #Disconnect to socketIO server
+  async def disconnect(self):
+    await self.sio.disconnect()
 
   #Send msg
   async def send_message(self,message,room_name,message_type="text"):

@@ -6,7 +6,7 @@ init(autoreset=True)
 class Client:
   def __init__(self,client_name):
     self.server_url = "https://sites.wtechhk.xyz"
-    self.sio = socketio.AsyncClient
+    self.sio = socketio.AsyncClient()
     self.client_name = client_name
 
     #設置消息控制和時間
@@ -21,8 +21,8 @@ class Client:
     self.sio.on("disconnect",self._on_disconnect)
     self.sio.on("chatMessage",self._on_chat_message)
 
-    #事件裝飾器設置
-    def on(self,event):
+  #事件裝飾器設置
+  def on(self,event):
       def wrapper(func):
         self.event_handlers[event] = func
         return func
@@ -41,7 +41,7 @@ class Client:
         return
         
       #檢查訊息是否與上一條訊息相同
-      if text == self.last_sent_message:
+      if message == self.last_sent_message:
         return
         
       msg = {

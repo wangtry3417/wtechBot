@@ -8,6 +8,6 @@ setup(
     author_email='wangtry3417@gmail.com',
     packages=find_packages(),
     install_requires=[
-        'python-socketio[client]'
+        'python-socketio',
     ],
 )

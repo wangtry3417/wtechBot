@@ -1,11 +1,15 @@
-import socketio
-import asyncio
+import socketio,asyncio,time
 
 class Client:
   def __init__(self,client_name):
     self.server_url = "https://sites.wtechhk.xyz"
     self.sio = socketio.AsyncClient
     self.client_name = client_name
+
+    #設置消息控制和時間
+    self.last_message_time = 0
+    self.message_cooldown = 1.0 #設置消息冷卻時間為1秒
+    self.last_sent_message = None
     
     #事件處理器（字典）
     self.event_handlers = {}
@@ -29,10 +33,21 @@ class Client:
 
     #Send msg
     async def send_message(self,message,room_name,message_type="text"):
+      current_time = time.time()
+      if current_time - self.last_message_time < self.message_cooldown:
+        return
+        
+      #檢查訊息是否與上一條訊息相同
+      if text == self.last_sent_message:
+        return
+        
       msg = {
         "username":self.client_name,
         "text":message,
         "room_number":room_name,
         "type":message_type
       }
+      await self.sio.emit("chatMessage",message)
+      #更新發送時間和消息/訊息
+      
       

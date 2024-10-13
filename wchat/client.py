@@ -58,18 +58,18 @@ class Client:
     print(Fore.GREEN+"已連接伺服器")
     if "on_ready" in self.event_handlers:
       await event_handlers["on_ready"]()
-    async def _on_disconnect(self):
-      print(Fore.RED+"已斷開連接")
-    async def _on_chat_message(self,data):
-      username = data.get("username")
-      text = data.get("text")
-      room_number = data.get("room_number")
-      if username == self.client_name:
-        return
-      print(f"[{room_number}] {username} : {text}")
-      #如果有on_message事件處理器，就調用他。
-      if "on_message" in self.event_handlers:
-        await self.event_handlers["on_message"](username,text,room_number)
+  async def _on_disconnect(self):
+    print(Fore.RED+"已斷開連接")
+  async def _on_chat_message(self,data):
+    username = data.get("username")
+    text = data.get("text")
+    room_number = data.get("room_number")
+    if username == self.client_name:
+      return
+    print(f"[{room_number}] {username} : {text}")
+    #如果有on_message事件處理器，就調用他。
+    if "on_message" in self.event_handlers:
+      await self.event_handlers["on_message"](username,text,room_number)
   #啟動客戶端
   def run(self):
     loop = asyncio.get_event_loop()

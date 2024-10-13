@@ -29,8 +29,8 @@ async def on_ready():
     await client.send_message(client_name, 'Hello, world!', 'default')
 
 @client.on('message')
-async def on_message(username, text, room_number):
-    print(f'收到消息: [{room_number}] {username}: {text}')
+async def on_message(username, msg, room_name):
+    print(f'收到消息: [{room_name}] {username}: {msg}')
 ```
 
 最後，啟動客戶端

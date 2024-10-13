@@ -34,30 +34,30 @@ class Client:
     async def disconnect(self):
       await self.sio.disconnect()
 
-    #Send msg
-    async def send_message(self,message,room_name,message_type="text"):
-      current_time = time.time()
-      if current_time - self.last_message_time < self.message_cooldown:
-        return
+  #Send msg
+  async def send_message(self,message,room_name,message_type="text"):
+    current_time = time.time()
+    if current_time - self.last_message_time < self.message_cooldown:
+      return
         
-      #檢查訊息是否與上一條訊息相同
-      if message == self.last_sent_message:
-        return
+    #檢查訊息是否與上一條訊息相同
+    if message == self.last_sent_message:
+      return
         
-      msg = {
+    msg = {
         "username":self.client_name,
         "text":message,
         "room_number":room_name,
         "type":message_type
-      }
-      await self.sio.emit("chatMessage",message)
-      #更新發送時間和消息/訊息
-      self.last_message_time = current_time
-      self.last_sent_message = message
-    async def _on_connect(self):
-      print(Fore.GREEN+"已連接伺服器")
-      if "on_ready" in self.event_handlers:
-        await event_handlers["on_ready"]()
+    }
+    await self.sio.emit("chatMessage",message)
+    #更新發送時間和消息/訊息
+    self.last_message_time = current_time
+    self.last_sent_message = message
+  async def _on_connect(self):
+    print(Fore.GREEN+"已連接伺服器")
+    if "on_ready" in self.event_handlers:
+      await event_handlers["on_ready"]()
     async def _on_disconnect(self):
       print(Fore.RED+"已斷開連接")
     async def _on_chat_message(self,data):
@@ -70,13 +70,13 @@ class Client:
       #如果有on_message事件處理器，就調用他。
       if "on_message" in self.event_handlers:
         await self.event_handlers["on_message"](username,text,room_number)
-    #啟動客戶端
-    def run(self):
-      loop = asyncio.get_event_loop()
-      print(Fore.GREEN+"已連接伺服器")
-      loop.run_until_complete(self.connect())
-      try:
-        loop.run_forever()
-      except KeyboardInterrupt:
-        print(Fore.RED+"已斷開連接")
-        loop.run_until_complete(self.disconnect())
+  #啟動客戶端
+  def run(self):
+    loop = asyncio.get_event_loop()
+    print(Fore.GREEN+"已連接伺服器")
+    loop.run_until_complete(self.connect())
+    try:
+      loop.run_forever()
+    except KeyboardInterrupt:
+      print(Fore.RED+"已斷開連接")
+      loop.run_until_complete(self.disconnect())

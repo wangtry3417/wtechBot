@@ -8,8 +8,6 @@ setup(
     author_email='wangtry3417@gmail.com',
     packages=find_packages(),
     install_requires=[
-        'cryptography',
-        'random2',
-        'nltk'
+        'python-socketio[client]'
     ],
 )

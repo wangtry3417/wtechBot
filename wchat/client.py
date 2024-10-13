@@ -57,7 +57,7 @@ class Client:
   async def _on_connect(self):
     print(Fore.GREEN+"已連接伺服器")
     if "on_ready" in self.event_handlers:
-      await event_handlers["on_ready"]()
+      await self.event_handlers["on_ready"]()
   async def _on_disconnect(self):
     print(Fore.RED+"已斷開連接")
   async def _on_chat_message(self,data):

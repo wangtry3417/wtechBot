@@ -1,6 +1,7 @@
 # WChat
 
 WChat 是一個基於 Socket.IO 的聊天客戶端庫，旨在讓開發者輕鬆地使用wchat泓聊平台構建自動程式。
+泓聊平台：https://sites.wtechhk.xyz/wtech/v2/chat
 
 ## 安裝
 

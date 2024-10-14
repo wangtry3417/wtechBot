@@ -4,10 +4,11 @@ from colorama import init,Fore
 init(autoreset=True)
 
 class Client:
-  def __init__(self,client_name):
+  def __init__(self,client_name,channel_name):
     self.server_url = "https://sites.wtechhk.xyz"
     self.sio = socketio.AsyncClient()
     self.client_name = client_name
+    self.channel_name = channel_name
 
     #設置消息控制和時間
     self.last_message_time = 0
@@ -19,6 +20,7 @@ class Client:
 
     self.sio.on("connect",self._on_connect)
     self.sio.on("disconnect",self._on_disconnect)
+    self.sio.on("joinChat",self._on_join_channel)
     self.sio.on("chatMessage",self._on_chat_message)
 
   #事件裝飾器設置
@@ -35,7 +37,7 @@ class Client:
     await self.sio.disconnect()
 
   #Send msg
-  async def send_message(self,message,room_name,message_type="text"):
+  async def send_message(self,message,message_type="text"):
     current_time = time.time()
     if current_time - self.last_message_time < self.message_cooldown:
       return
@@ -47,7 +49,7 @@ class Client:
     msg = {
         "username":self.client_name,
         "text":message,
-        "room_number":room_name,
+        "room_number":self.channel_name,
         "type":message_type
     }
     await self.sio.emit("chatMessage",msg)
@@ -60,6 +62,8 @@ class Client:
       await self.event_handlers["on_ready"]()
   async def _on_disconnect(self):
     print(Fore.RED+"已斷開連接")
+  async def _on_join_channel(self):
+    await self.sio.emit("joinChat",{"username":self.client_name,"room_number":self.channel_name})
   async def _on_chat_message(self,data):
     username = data.get("username")
     text = data.get("text")
@@ -79,4 +83,6 @@ class Client:
       loop.run_forever()
     except KeyboardInterrupt:
       print(Fore.RED+"已斷開連接")
+      self.sio.emit("leaveChat",{"username":self.client_name,"room_number":self.channel_name})
+      time.sleep(1.5)
       loop.run_until_complete(self.disconnect())

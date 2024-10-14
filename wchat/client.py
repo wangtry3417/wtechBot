@@ -50,7 +50,7 @@ class Client:
         "room_number":room_name,
         "type":message_type
     }
-    await self.sio.emit("chatMessage",message)
+    await self.sio.emit("chatMessage",msg)
     #更新發送時間和消息/訊息
     self.last_message_time = current_time
     self.last_sent_message = message

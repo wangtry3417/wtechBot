@@ -1,6 +1,6 @@
 # WChat
 
-WChat 是一個基於 Socket.IO 的聊天客戶端庫，旨在讓開發者輕鬆地構建實時聊天機器人和應用程序。
+WChat 是一個基於 Socket.IO 的聊天客戶端庫，旨在讓開發者輕鬆地使用wchat泓聊平台構建自動程式。
 
 ## 安裝
 
@@ -26,7 +26,7 @@ client = Client(client_name=client_name)
 @client.on('ready')
 async def on_ready():
     print('機器人已準備好！')
-    await client.send_message(client_name, 'Hello, world!', 'default')
+    await client.send_message(client_name, 'Hello, world!')
 
 @client.on('message')
 async def on_message(username, msg, room_name):

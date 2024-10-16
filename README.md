@@ -8,7 +8,7 @@ WChat 是一個基於 Socket.IO 的聊天客戶端庫，旨在讓開發者輕鬆
 要安裝 WChat，請使用以下命令：
 
 ```bash
-pip install https://github.com/wangtry3417/wtechBot.git
+pip install git+https://github.com/wangtry3417/wtechBot.git
 ```
 
 引入

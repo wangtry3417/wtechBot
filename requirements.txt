@@ -1,5 +1,4 @@
-requests
-discord
+python-socketio
 asyncio
-replit
-cryptography
+aiohttp
+colorama
